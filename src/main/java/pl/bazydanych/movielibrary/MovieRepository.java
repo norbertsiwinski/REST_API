@@ -27,16 +27,20 @@ public class MovieRepository
     public int add(List<Movie> movies)
     {
         movies.forEach(movie -> jdbcTemplate
-                .update("INSERT INTO MOVIES(MOVIE_ID, TITLE, PERSONALSCORE) VALUES (?,?, ?)",
-                        movie.getMovie_id(), movie.getTitle(), movie.getPersonalScore()
+                .update("INSERT INTO MOVIES(TITLE, PERSONALSCORE, DIRECTOR, RELEASEDATE) VALUES (?,?,?,?)",
+                        movie.getTitle(), movie.getPersonalScore(), movie.getDirector(), movie.getReleaseDate()
                 ));
-        return 0;
+        return 1;
     }
 
     public int updatedMovie(Movie movie)
     {
-        System.out.println("gfg");
-        return jdbcTemplate.update("UPDATE MOVIES SET PERSONALSCORE=? WHERE TITILE=?",
-                movie.getPersonalScore(), movie.getTitle());
+        return jdbcTemplate.update("UPDATE MOVIES SET PERSONALSCORE=?, DIRECTOR=? WHERE TITLE=?",
+                movie.getPersonalScore(), movie.getDirector(), movie.getTitle());
+    }
+
+    public int delete(String title)
+    {
+        return jdbcTemplate.update("DELETE FROM MOVIES WHERE TITLE=?", title);
     }
 }

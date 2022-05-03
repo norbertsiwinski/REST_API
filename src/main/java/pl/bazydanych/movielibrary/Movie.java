@@ -10,7 +10,6 @@ import lombok.ToString;
 @NoArgsConstructor
 public class Movie
 {
-    private int movie_id;
     private String title;
     private String director;
     private String releaseDate;

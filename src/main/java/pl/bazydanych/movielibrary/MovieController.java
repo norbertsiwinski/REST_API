@@ -29,18 +29,15 @@ public class MovieController
         return movieRepository.add(movies);
     }
 
-    @PatchMapping("/update/{title}")
+    @PatchMapping("/{title}")
     public int updatedMovie(@PathVariable("title") String title, @RequestBody Movie updatedMovie)
     {
         Movie movie = getByTitle(title);
-        System.out.println("gfg");
         if(movie != null)
         {
-            if(updatedMovie.getPersonalScore() > 0)
-            {
-                movie.setPersonalScore(movie.getPersonalScore());
-            }
-
+            movie.setPersonalScore(updatedMovie.getPersonalScore());
+            System.out.println(updatedMovie.getDirector());
+            movie.setDirector(updatedMovie.getDirector());
             movieRepository.updatedMovie(movie);
             return 1;
         }
@@ -49,4 +46,11 @@ public class MovieController
             return -1;
         }
     }
+
+    @DeleteMapping("/{title}")
+    public int delete(@PathVariable("title") String title)
+    {
+        return movieRepository.delete(title);
+    }
+
 }

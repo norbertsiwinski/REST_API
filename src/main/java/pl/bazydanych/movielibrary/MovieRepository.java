@@ -22,6 +22,7 @@ public class MovieRepository
     {
         return  jdbcTemplate.query("SELECT MOVIE_ID FROM MOVIES WHERE TITLE = ?",
                 BeanPropertyRowMapper.newInstance(Movie.class), title).get(0);
+
     }
 
     public int add(List<Movie> movies)
@@ -32,4 +33,11 @@ public class MovieRepository
                 ));
         return 0;
     }
+
+
+    //public int updateMovie(String title)
+    //{
+     //   MovieRepository movie = new MovieRepository();
+      //  movie.getByTitle(title);
+    //}
 }

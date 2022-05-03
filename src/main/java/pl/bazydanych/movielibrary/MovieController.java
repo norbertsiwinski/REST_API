@@ -2,7 +2,6 @@ package pl.bazydanych.movielibrary;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -31,4 +30,9 @@ public class MovieController
         return movieRepository.add(movies);
     }
 
+    @GetMapping("/update/{title}")
+    public Movie updateMovie(@PathVariable("title") String title)
+    {
+        return movieRepository.getByTitle(title);
+    }
 }

@@ -13,17 +13,16 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "Title",
-    "Released",
-    "Genre",
-    "Director",
-    "Actors",
-    "Plot",
-    "Poster",
-    "imdbRating"
+        "Title",
+        "Released",
+        "Genre",
+        "Director",
+        "Actors",
+        "Plot",
+        "imdbRating"
 })
 @Generated("jsonschema2pojo")
-public class Movie {
+public class MovieApi {
 
     @JsonProperty("Title")
     private String title;
@@ -37,8 +36,6 @@ public class Movie {
     private String actors;
     @JsonProperty("Plot")
     private String plot;
-    @JsonProperty("Poster")
-    private String poster;
     @JsonProperty("imdbRating")
     private String imdbRating;
     @JsonIgnore
@@ -104,16 +101,6 @@ public class Movie {
         this.plot = plot;
     }
 
-    @JsonProperty("Poster")
-    public String getPoster() {
-        return poster;
-    }
-
-    @JsonProperty("Poster")
-    public void setPoster(String poster) {
-        this.poster = poster;
-    }
-
     @JsonProperty("imdbRating")
     public String getImdbRating() {
         return imdbRating;
@@ -132,6 +119,41 @@ public class Movie {
     @JsonAnySetter
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append('{');
+        sb.append("title");
+        sb.append('=');
+        sb.append(((this.title == null)?"<null>":this.title));
+        sb.append(',');
+        sb.append("released");
+        sb.append('=');
+        sb.append(((this.released == null)?"<null>":this.released));
+        sb.append(',');
+        sb.append("genre");
+        sb.append('=');
+        sb.append(((this.genre == null)?"<null>":this.genre));
+        sb.append(',');
+        sb.append("director");
+        sb.append('=');
+        sb.append(((this.director == null)?"<null>":this.director));
+        sb.append(',');
+        sb.append("actors");
+        sb.append('=');
+        sb.append(((this.actors == null)?"<null>":this.actors));
+        sb.append(',');
+        sb.append("plot");
+        sb.append('=');
+        sb.append(((this.plot == null)?"<null>":this.plot));
+        sb.append(',');
+        sb.append("imdbRating");
+        sb.append('=');
+        sb.append(((this.imdbRating == null)?"<null>":this.imdbRating));
+        sb.append('}');
+        return sb.toString();
     }
 
 }

@@ -16,7 +16,6 @@ public class MovieService
 {
     private final WebClient webClient;
     private RestTemplate restTemplate;
-
     public MovieService(WebClient.Builder builder)
     {
         webClient = builder.baseUrl("http://www.omdbapi.com/").build();

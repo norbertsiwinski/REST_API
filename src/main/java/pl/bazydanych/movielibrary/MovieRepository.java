@@ -20,9 +20,8 @@ public class MovieRepository
 
     public Movie getByTitle(String title)
     {
-        return  jdbcTemplate.query("SELECT MOVIE_ID FROM MOVIES WHERE TITLE = ?",
+        return  jdbcTemplate.query("SELECT * FROM MOVIES WHERE TITLE = ?",
                 BeanPropertyRowMapper.newInstance(Movie.class), title).get(0);
-
     }
 
     public int add(List<Movie> movies)
@@ -34,10 +33,10 @@ public class MovieRepository
         return 0;
     }
 
-
-    //public int updateMovie(String title)
-    //{
-     //   MovieRepository movie = new MovieRepository();
-      //  movie.getByTitle(title);
-    //}
+    public int updatedMovie(Movie movie)
+    {
+        System.out.println("gfg");
+        return jdbcTemplate.update("UPDATE MOVIES SET PERSONALSCORE=? WHERE TITILE=?",
+                movie.getPersonalScore(), movie.getTitle());
+    }
 }

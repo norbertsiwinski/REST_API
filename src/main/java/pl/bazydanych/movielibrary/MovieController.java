@@ -11,7 +11,6 @@ public class MovieController
     @Autowired
     MovieRepository movieRepository;
 
-
     @GetMapping("")
     public List<Movie> getAll()
     {
@@ -30,9 +29,24 @@ public class MovieController
         return movieRepository.add(movies);
     }
 
-    @GetMapping("/update/{title}")
-    public Movie updateMovie(@PathVariable("title") String title)
+    @PatchMapping("/update/{title}")
+    public int updatedMovie(@PathVariable("title") String title, @RequestBody Movie updatedMovie)
     {
-        return movieRepository.getByTitle(title);
+        Movie movie = getByTitle(title);
+        System.out.println("gfg");
+        if(movie != null)
+        {
+            if(updatedMovie.getPersonalScore() > 0)
+            {
+                movie.setPersonalScore(movie.getPersonalScore());
+            }
+
+            movieRepository.updatedMovie(movie);
+            return 1;
+        }
+        else
+        {
+            return -1;
+        }
     }
 }
